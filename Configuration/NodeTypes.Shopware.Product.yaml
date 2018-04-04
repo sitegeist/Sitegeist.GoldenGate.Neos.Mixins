@@ -1,0 +1,47 @@
+Sitegeist.GoldenGate.Neos.Mixins:Shopware.Product:
+  abstract: true
+  ui:
+    inspector:
+      groups:
+        goldengate-shop:
+          position: 10
+          label: Shopware Shop
+          icon: 'icon-home'
+          tab: 'default'
+        goldengate-product:
+          position: 20
+          label: Shopware Products
+          icon: 'icon-tags'
+          tab: 'default'
+  properties:
+    goldengate__shop:
+      type: string
+      defaultValue: 'default'
+      ui:
+        label: 'Shop'
+        reloadIfChanged: TRUE
+        inspector:
+          position: 10
+          group: goldengate-shop
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            allowEmpty: TRUE
+            multiple: FALSE
+            placeholder: 'Type to search'
+            dataSourceIdentifier: 'SitegeistGoldenGate_Shop'
+    goldengate__product:
+      type: string
+      defaultValue: ''
+      ui:
+        label: 'Product'
+        reloadIfChanged: TRUE
+        inspector:
+          position: 20
+          group: goldengate-product
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            allowEmpty: TRUE
+            multiple: FALSE
+            placeholder: 'Type to search'
+            dataSourceIdentifier: 'SitegeistGoldenGate_Product'
+

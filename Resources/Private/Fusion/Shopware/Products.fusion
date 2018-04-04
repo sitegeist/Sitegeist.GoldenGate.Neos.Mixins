@@ -1,0 +1,39 @@
+prototype(Sitegeist.GoldenGate.Neos.Mixins:Shopware.Products) < prototype(Neos.Fusion:Component) {
+    node = null
+    renderer = Neos.Fusion:Value {
+        @if.isMixin = ${q(props.node).is('[instanceof Sitegeist.GoldenGate.Neos.Mixins:Shopware.Products]')}
+
+        @context {
+            shop = ${q(props.node).property('goldengate__shop')}
+            minPrice = ${q(props.node).property('goldengate__minPrice')}
+            maxPrice = ${q(props.node).property('goldengate__maxPrice')}
+            productIds = ${q(props.node).property('goldengate__products')}
+            filterGroupOptionIds = ${q(props.node).property('goldengate__filterGroupOptions')}
+            categoryIds = ${q(props.node).property('goldengate__categories')}
+            limit = ${q(props.node).property('goldengate__limit')}
+        }
+
+        value = ${Shopware.Api.productReferences(shop, minPrice, maxPrice, filterGroupOptionIds, categoryIds)}
+
+        value.@process.prependManuallySelectedProducts {
+            @position = 'end 9700'
+            @if.has = ${productIds}
+            expression = ${Array.concat(productIds, value)}
+        }
+
+        value.@process.limitLength {
+            @position = 'end 9800'
+            @if.has = ${limit}
+            expression = ${Array.slice(value, 0, limit)}
+        }
+
+        value.@process.fetchProducts {
+            @position = 'end 9900'
+            expression = Neos.Fusion:RawCollection {
+                collection = ${value}
+                itemName = 'item'
+                itemRenderer = ${Shopware.Api.product(shop, item)}
+            }
+        }
+    }
+}

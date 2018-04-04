@@ -1,0 +1,5 @@
+Neos:
+  Neos:
+    fusion:
+      autoInclude:
+        Sitegeist.GoldenGate.Neos.Mixins: true

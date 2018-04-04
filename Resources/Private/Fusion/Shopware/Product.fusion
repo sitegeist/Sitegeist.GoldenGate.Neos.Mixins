@@ -1,0 +1,8 @@
+prototype(Sitegeist.GoldenGate.Neos.Mixins:Shopware.Product) < prototype(Neos.Fusion:Component) {
+    node = null
+    renderer = Neos.Fusion:Value {
+        @if.isMixin = ${q(props.node).is('[instanceof Sitegeist.GoldenGate.Neos.Mixins:Shopware.Product]')}
+        @if.hasProduct = ${q(node).property('goldengate__product')}
+        value = ${Shopware.Api.product(q(node).property('goldengate__shop'), q(node).property('goldengate__product'))}
+    }
+}

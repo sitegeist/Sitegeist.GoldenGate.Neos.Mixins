@@ -1,0 +1,21 @@
+{
+    "name": "sitegeist/goldengate-neos-mixins",
+    "description": "Mixin NodeTypes and Fusion prototypes to reference and access Shopware DTOs",
+    "type": "neos-plugin",
+    "license": "GPL-3.0-or-later",
+    "require": {
+        "neos/neos": "^3.3.0",
+        "sitegeist/goldengate-neos-api": "*",
+        "sitegeist/goldengate-dto": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sitegeist\\GoldenGate\\Neos\\Mixins\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Sitegeist.GoldenGate.Neos.Mixins"
+        }
+    }
+}
