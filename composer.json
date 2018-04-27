@@ -4,7 +4,7 @@
     "type": "neos-plugin",
     "license": "GPL-3.0-or-later",
     "require": {
-        "neos/neos": "^3.3.0",
+        "neos/neos": "^3.3.0 || ^4.0 || dev-master",
         "sitegeist/goldengate-neos-api": "*",
         "sitegeist/goldengate-dto": "*"
     },
